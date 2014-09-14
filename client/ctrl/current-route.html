@@ -1,0 +1,21 @@
+<template name='current-route'>
+  {{#if hasLayout}}
+    {{#with layoutHtml}}
+      {{> ctrl type=type data=data }}
+    {{/with}}
+  {{else}}
+    {{#with tmplHtml}}
+      {{> ctrl type=type data=data }}
+    {{/with}}
+  {{/if}}
+</template>
+
+
+
+<template name='yield'>
+  {{#with html}}
+    {{> ctrl type=type data=data }}
+  {{/with}}
+</template>
+
+

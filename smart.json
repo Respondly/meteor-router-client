@@ -1,0 +1,14 @@
+{
+  "name": "router-client",
+  "description": "Simple programmatic routing",
+  "homepage": "",
+  "author": "",
+  "version": "0.0.1",
+  "git": "",
+  "packages": {
+    "munit": {},
+    "util": {
+      "path": "../util"
+    }
+  }
+}
