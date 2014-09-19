@@ -5,6 +5,11 @@ session = new ScopedSession('core-router')
 
 
 
+# Default route to the property is visible to first-time users
+# looking at the Router namespace in the console.
+# This is set when the route changes.
+Router.route = null
+
 
 
 ###
