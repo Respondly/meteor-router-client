@@ -1,20 +1,4 @@
 ###
-Start [page-js] monitoring push-state (after all routes have been registered).
-###
-Meteor.startup -> page.start()
-
-
-
-
-
-
-
-# URL SWITCHING METHODS --------------------------------------------------------------------------
-
-
-
-
-###
 Loads the given URL into the browser, adding it to the history.
 
 @param path: The URL to load.

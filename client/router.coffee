@@ -148,6 +148,9 @@ Router.add = (base, routes) ->
       for func in handlers
         Router.before(path, func)
 
+  # Ensure the page router is started.
+  page.start()
+
 
 
 ###
