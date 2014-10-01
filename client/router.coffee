@@ -1,7 +1,12 @@
 #= require ./ns.js
 #= base
 beforeHandlers = {}
-session = new ScopedSession('core-router')
+hash = new ReactiveHash()
+
+
+Meteor.startup ->
+  # Ensure the page router is started.
+  page.start()
 
 
 
@@ -34,10 +39,10 @@ Router.current = (route) ->
     Router.invalidate()
 
 
-  Router.deps.route() # Read from the session (so as to make this call reactive).
+  Router.deps.route() # Read from the hash (so as to make this call reactive).
   if templateChanged
     # Store the value causing a reactive callback, only if there is a template change.
-    Router.deps.route( route?.pattern )
+    Router.deps.route(route?.pattern)
 
 
   # NB: Return the non-serialized version of the route.
@@ -66,11 +71,10 @@ The complete set of registered route definitions.
 ###
 Router.routes = {}
 
-# Private session properties.
-Router.deps = deps = (value) -> session.prop 'route',  value   # Invalidates on all changes to route.
-deps.route      = (value) -> session.prop 'route',  value   # Only invalidates when route URL changes.
-deps.layout     = (value) -> session.prop 'layout', value   # Only invaliates when 'layout' changes.
-deps.tmpl       = (value) -> session.prop 'tmpl',   value   # Only invalidates when 'tmpl' changes.
+Router.deps = deps = (value) -> hash.prop 'route',  value   # Invalidates on all changes to route.
+deps.route      = (value) -> hash.prop 'route',  value   # Only invalidates when route URL changes.
+deps.layout     = (value) -> hash.prop 'layout', value   # Only invaliates when 'layout' changes.
+deps.tmpl       = (value) -> hash.prop 'tmpl',   value   # Only invalidates when 'tmpl' changes.
 
 
 ###
@@ -89,7 +93,7 @@ to be redrawn.
                     (default:true)
 ###
 Router.redraw = (options = {}) ->
-  # Bump to the session object value, causing a redraw.
+  # Bump to the reactive-hash object value, causing a redraw.
   bump = (prop) ->
             value = prop()
             prop('')
@@ -147,9 +151,6 @@ Router.add = (base, routes) ->
       handlers = [handlers] unless Object.isArray(handlers)
       for func in handlers
         Router.before(path, func)
-
-  # Ensure the page router is started.
-  page.start()
 
 
 
