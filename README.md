@@ -2,11 +2,6 @@
 Simple client-side routing.
 
 
-## Installation
-When running for the first time:
-
-    mrt update
-    package update
 
 
 
