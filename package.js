@@ -1,7 +1,7 @@
 Package.describe({
   name: 'respondly:router-client',
   summary: 'Simple client-side routing',
-  version: '0.0.1',
+  version: '1.0.0',
   git: 'https://github.com/Respondly/meteor-router-client.git'
 });
 
@@ -11,9 +11,8 @@ Package.onUse(function (api) {
   api.versionsFrom('1.0');
   api.use(['coffeescript', 'http']);
   api.use(['templating', 'ui', 'spacebars'], 'client');
-  api.use('respondly:css-stylus');
-  api.use('respondly:ctrl');
-  api.use('respondly:util');
+  api.use('respondly:css-stylus@1.0.0');
+  api.use('respondly:ctrl@1.0.0');
   api.export('Router');
 
   // Generated with: github.com/philcockfield/meteor-package-paths
