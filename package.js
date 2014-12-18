@@ -1,25 +1,31 @@
 Package.describe({
-  summary: 'Simple client-side routing'
+  name: 'respondly:router-client',
+  summary: 'Simple client-side routing',
+  version: '1.0.2',
+  git: 'https://github.com/Respondly/meteor-router-client.git'
 });
 
 
 
-Package.on_use(function (api) {
+Package.onUse(function (api) {
+  // api.versionsFrom('1.0');
   api.use(['coffeescript', 'http']);
-  api.use(['templating'], 'client');
-  api.use(['css-stylus', 'ctrl', 'util']);
+  api.use(['templating', 'ui', 'spacebars'], 'client');
+  api.use('respondly:css-stylus@1.0.3');
+  api.use('respondly:ctrl@1.0.1');
+  api.use('respondly:util@1.0.1');
   api.export('Router');
 
   // Generated with: github.com/philcockfield/meteor-package-paths
-  api.add_files('client/ctrl/current-route.html', 'client');
-  api.add_files('client/ns.js', 'client');
-  api.add_files('client/router.coffee', 'client');
-  api.add_files('client/ctrl/current-route.coffee', 'client');
-  api.add_files('client/libs/page-js.js', 'client');
-  api.add_files('client/page.coffee', 'client');
-  api.add_files('client/route-context.coffee', 'client');
-  api.add_files('client/route-model-factory.coffee', 'client');
-  api.add_files('client/route-reactor.coffee', 'client');
+  api.addFiles('client/ctrl/current-route.html', 'client');
+  api.addFiles('client/ns.js', 'client');
+  api.addFiles('client/router.coffee', 'client');
+  api.addFiles('client/ctrl/current-route.coffee', 'client');
+  api.addFiles('client/libs/page-js.js', 'client');
+  api.addFiles('client/page.coffee', 'client');
+  api.addFiles('client/route-context.coffee', 'client');
+  api.addFiles('client/route-model-factory.coffee', 'client');
+  api.addFiles('client/route-reactor.coffee', 'client');
 
 });
 
