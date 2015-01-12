@@ -111,6 +111,7 @@ Formats the given path with the base URL.
                         value set via the [base] method is used.
 ###
 Router.formatUrl = (path, base = null) ->
+  return path if path is '*'
   path = path.remove(/^\//)
   base = if Object.isString(base) then base.remove(/\/$/) else ''
   "#{ base }/#{ path }"
