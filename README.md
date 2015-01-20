@@ -1,9 +1,7 @@
 # Client Router
 Simple client-side routing.
 
-
-
-
+[![Circle CI](https://circleci.com/gh/Respondly/meteor-router-client.svg?style=svg)](https://circleci.com/gh/Respondly/meteor-router-client)
 
 ## License (MIT)
 
