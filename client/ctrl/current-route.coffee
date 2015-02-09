@@ -11,6 +11,9 @@ toHtml = (type) ->
 
 Ctrl.define
   'current-route':
+    api:
+      contentCtrl: -> @children[0]
+
     helpers:
       hasLayout:  -> Router.deps.layout()?
       layoutHtml: -> toHtml(Router.deps.layout())
