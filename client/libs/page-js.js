@@ -139,6 +139,16 @@ THE SOFTWARE.
     if (false !== options.click) window.addEventListener('click', onclick, false);
     if (!dispatch) return;
     var url = location.pathname + location.search + location.hash;
+
+    // HACK by @zqzoltan:
+    // When running inside the optimizely editor in 'compatibility mode',
+    // the 'url' var will be something like:
+    // "/https://staging-marketing.respond.ly/?optimizely_disable=true..."
+    //
+    // This regexp strips the start back to /?...
+    url = url.replace(/^\/https?\:\/\/.*?\//, '/');
+    // -------------------------------------------------------------------------
+
     page.replace(url, null, true, dispatch);
   };
 
