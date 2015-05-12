@@ -140,12 +140,14 @@ THE SOFTWARE.
     if (!dispatch) return;
     var url = location.pathname + location.search + location.hash;
 
-    // When running inside the optimizely editor, path will be something like:
-    // "/http://static-test.percolatestudio.com/?optimizely_disable=true..."
+    // HACK by @zqzoltan:
+    // When running inside the optimizely editor in 'compatibility mode',
+    // the 'url' var will be something like:
+    // "/https://staging-marketing.respond.ly/?optimizely_disable=true..."
     //
     // This regexp strips the start back to /?...
     url = url.replace(/^\/https?\:\/\/.*?\//, '/');
-    console.log('page.start url,', url);
+    // -------------------------------------------------------------------------
 
     page.replace(url, null, true, dispatch);
   };
